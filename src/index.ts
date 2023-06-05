@@ -1,7 +1,7 @@
-import { greetUser } from '$utils/greet';
+import { ads } from '$utils/ads';
+
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  const name = 'John Doe';
-  greetUser(name);
+  ads();
 });
