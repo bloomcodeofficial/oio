@@ -80,8 +80,6 @@ export const ads = async function () {
       })
       .then((data) => {
         const { jobs } = data;
-
-        console.log(jobs);
         return jobs;
       })
       .catch((error) => {
