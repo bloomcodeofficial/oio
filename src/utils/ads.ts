@@ -80,6 +80,8 @@ export const ads = async function () {
       })
       .then((data) => {
         const { jobs } = data;
+
+        console.log(jobs);
         return jobs;
       })
       .catch((error) => {
@@ -94,12 +96,16 @@ export const ads = async function () {
     const company = item.querySelector('[ponty-element="company"]');
     const location = item.querySelector('[ponty-element="location"]');
     // const extent = item.querySelector('[ponty-element="extent"]');
-    // const logo = item.querySelector('[ponty-element="logo"]');
+    const logo = item.querySelector('[ponty-element="logo"]');
 
     if (title) title.textContent = ad.title;
     if (company) company.textContent = ad.organization_name;
     if (location) location.textContent = ad.location;
     if (item) item.dataset.pontyid = ad.assignment_id;
+    if (logo && ad.logo) logo.src = ad.image_url;
+    if (logo && !ad.logo)
+      logo.src =
+        'https://uploads-ssl.webflow.com/64745e9073bbb3463f837322/647ed34c103fe265433f78c4_logoipsum-263.svg';
 
     return item;
   }
@@ -112,6 +118,7 @@ export const ads = async function () {
     const extent = document.querySelector('[ponty-element="extent"]');
     const content = document.querySelector('[ponty-element="body"]');
     const button1 = document.querySelector('[ponty-element="button"]');
+    const logo = document.querySelector('[ponty-element="logo"]');
     const button2 = document.querySelector('[ponty-element="button2"]');
     const headElement = document.querySelector('head');
     const metaTitle = headElement.querySelector('title');
@@ -129,6 +136,10 @@ export const ads = async function () {
     if (content) content.replaceWith(createMainContent(ad.body));
     if (button1) button1.href = ad.apply_url;
     if (button2) button2.href = ad.apply_url;
+    if (logo && ad.logo) logo.src = ad.image_url;
+    if (logo && !ad.logo)
+      logo.src =
+        'https://uploads-ssl.webflow.com/64745e9073bbb3463f837322/647ed34c103fe265433f78c4_logoipsum-263.svg';
   }
 
   function createMainContent(string) {
